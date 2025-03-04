@@ -1,6 +1,6 @@
 # Define your GPO names
-$GPO1 = "Group Policy 1"
-$GPO2 = "Group Policy 2"
+$GPO1 = "Group Policy 1" ##The GPO we're replacing
+$GPO2 = "Group Policy 2" ##The GPO being added in
 
 # Import the Group Policy module
 Import-Module GroupPolicy

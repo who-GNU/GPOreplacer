@@ -121,7 +121,8 @@ function Show-Progress {
 
 # Fetch available GPOs and domain name
 $gpoList = Get-AllGPOs
-$domainList = @(Get-DomainName, "Enter Manually")
+$domainName = Get-DomainName
+$domainList = @($domainName, "Enter Manually")
 
 # Prompt user for GPO selections and domain
 $GPO1 = Get-UserSelection -Prompt "Select the GPO to replace (GPO1):" -Options $gpoList

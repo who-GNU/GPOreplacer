@@ -9,8 +9,9 @@ $logFile = "C:\GPO_Link_Changes_$(Get-Date -Format 'yyyyMMdd_HHmmss').csv" ##Upd
 Import-Module GroupPolicy
 
 # Get all linked locations for GPO1
-$linkedLocations = Get-GPInheritance -Target "DomainNameHere" | ForEach-Object { 
-    $_.GpoLinks | Where-Object { $_.DisplayName -eq $GPO1 } | ForEach-Object { $_.Target }
+$linkedLocations = Get-GPInheritance -Domain "yourdomain.com" -All | 
+    Where-Object { $_.GpoLinks -match "DisplayName=$GPO1" } | 
+    Select-Object -ExpandProperty Target
 }
 
 # Remove duplicates if any

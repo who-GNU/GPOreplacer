@@ -4,7 +4,7 @@ Add-Type -AssemblyName System.Windows.Forms
 # Function to retrieve all GPOs in the domain
 function Get-AllGPOs {
     Import-Module GroupPolicy
-    return (Get-GPO -All).DisplayName
+    return (Get-GPO -All | Select-Object -ExpandProperty DisplayName | Sort-Object)
 }
 
 # Function to retrieve domain name dynamically
